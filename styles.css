@@ -21,7 +21,7 @@ body {
   height: 400px; /* Fixed height */
   background-color: #1e1e1e; /* Terminal background color */
   color: #ffffff; /* Terminal text color */
-  border-radius: 1px; /* Rounded corners */
+  border-radius: 3px; /* Rounded corners */
   z-index: 1000; /* Ensure it's above other elements */
   border: 2px solid #4d4d4d; /* Terminal border color */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Terminal shadow */
@@ -36,8 +36,8 @@ body {
 /* Terminal header styles */
 #terminal-header {
   background-color: #2d2d2d; /* Header background color */
-  border-top-left-radius: 1px; /* Rounded corners for top left */
-  border-top-right-radius: 1px; /* Rounded corners for top right */
+  border-top-left-radius: 3px; /* Rounded corners for top left */
+  border-top-right-radius: 3px; /* Rounded corners for top right */
   padding: 10px; /* Add padding */
   display: flex; /* Use flexbox for layout */
   justify-content: flex-start; /* Align buttons to the left */
