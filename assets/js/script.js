@@ -9,11 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Initial terminal text content
   var terminalTextContent = [
-      "User: unknown",
-      "IP: Loading...",
-      "System: Loading...", // System information placeholder
-      "Bio Loaded",
-      "Press Enter To Continue",
+      "Usuario: Desconocido",
+      "IP: Cargando...",
+      "Sistema: Cargando...", // System information placeholder
+      "Invitación creada...",
+      "Presiona ENTER para continuar.",
   ];
   var currentIndex = 0;
 
@@ -88,8 +88,8 @@ document.addEventListener('DOMContentLoaded', function() {
           typeWriter();
       })
       .catch(error => {
-          console.error('Error fetching IP address:', error);
-          terminalTextContent[1] = "IP: Unable to fetch IP address";
+          console.error('Error al obtener la dirección IP:', error);
+          terminalTextContent[1] = "IP: No se puede obtener la dirección IP";
           typeWriter();
       });
 
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
           return getiOSVersion();
       } else {
           // Default to "Unknown" if system information cannot be determined
-          return "Unknown";
+          return "Desconocido";
       }
   }
   
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Get the operating system information
   var operatingSystem = getOperatingSystem();
-  terminalTextContent[2] = "System: " + operatingSystem;
+  terminalTextContent[2] = "Sistema: " + operatingSystem;
 
   // Center the terminal window on the screen
   function centerTerminal() {
@@ -207,22 +207,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Function to generate ASCII art
   function getAsciiArt() {
-      return `
-    ███████╗██████╗ 
-    ██╔════╝╚════██╗
-    ███████╗ █████╔╝
-    ╚════██║██╔═══╝ 
-    ███████║███████╗
-    ╚══════╝╚══════╝
-                    
-  `;
+      return ``;
   }
 
   // Get the audio element
   var audio = document.getElementById("myAudio");
 
   // Set the maximum volume level (between 0 and 1)
-  var maxVolume = 0.1; // Adjust this value as needed
+  var maxVolume = 0.25; // Adjust this value as needed
 
   // Function to limit the volume
   function limitVolume(volume) {
@@ -235,5 +227,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Example usage:
   // Set volume to 0.7 (will be limited to maxVolume)
-  limitVolume(0.1);
+  limitVolume(0.25);
 });
