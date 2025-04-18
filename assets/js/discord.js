@@ -1,34 +1,42 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const userId = "837149144476155905"; // Tu ID fijo
-    const apiUrl = `https://discord-lookup-api-alpha.vercel.app/v1/user/${userId}`;
+    // Lista de perfiles (puedes modificar las IDs y los identificadores HTML a gusto)
+    const profiles = [
+        { id: "837149144476155905", imgId: "img1", usernameId: "username1" },
+        { id: "941757673441988671", imgId: "img2", usernameId: "username2" },
+        { id: "1215022068991660054", imgId: "img3", usernameId: "username3" },
+        { id: "642610076632350721", imgId: "img4", usernameId: "username4" }
+    ];
 
-    // Elementos
-    const profilePicture = document.getElementById('profile-picture');
-    const usernameText = document.getElementById('username'); // NUEVO elemento
+    profiles.forEach(profile => {
+        const apiUrl = `https://discord-lookup-api-alpha.vercel.app/v1/user/${profile.id}`;
 
-    // Fetch user data
-    fetch(apiUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("API Response:", data);
+        const profilePicture = document.getElementById(profile.imgId);
+        const usernameText = document.getElementById(profile.usernameId);
 
-            // Set avatar
-            const avatarUrl = data.avatar ? data.avatar.link : './assets/pfp/default.jpg';
-            profilePicture.src = avatarUrl;
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(`API Response for ID ${profile.id}:`, data);
 
-            // Mostrar nombre de usuario + tag
-            if (usernameText) {
-                const tag = data.discriminator && data.discriminator !== "0" ? `#${data.discriminator}` : "";
-                usernameText.textContent = `${data.username}${tag}`;
-}
+                // Set avatar
+                const avatarUrl = data.avatar ? data.avatar.link : './assets/pfp/default.jpg';
+                if (profilePicture) {
+                    profilePicture.src = avatarUrl;
+                }
 
-        })
-        .catch(error => {
-            console.error("Error fetching user data:", error);
-        });
+                // Mostrar nombre de usuario + tag
+                if (usernameText) {
+                    const tag = data.discriminator && data.discriminator !== "0" ? `#${data.discriminator}` : "";
+                    usernameText.textContent = `${data.username}${tag}`;
+                }
+            })
+            .catch(error => {
+                console.error(`Error fetching user data for ID ${profile.id}:`, error);
+            });
+    });
 });
