@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: "941757673441988671", imgId: "img2", usernameId: "username2" },
         { id: "1215022068991660054", imgId: "img3", usernameId: "username3" },
         { id: "642610076632350721", imgId: "img4", usernameId: "username4" },
-        { id: "642610076632350721", imgId: "img5", usernameId: "username5" }
+        { id: "829065403090731051", imgId: "img5", usernameId: "username5" }
     ];
 
     profiles.forEach(profile => {
